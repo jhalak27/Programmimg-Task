@@ -15,7 +15,7 @@ int main(){
 			float nr = r / pow(2, 0.5); //nr -> new raduis after fission
 			float minReq = 4 * nr; //minimum length requried (4*newRadius)
 
-			if(l < minReq || w < minReq) //condition for min space required (if length or width is less than minimun required)
+			if(l < minReq && w < minReq) //condition for min space required (if length or width is less than minimun required)
 			{  
 				cout<<"Not enough space for fission."<<endl;
 			}
