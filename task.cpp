@@ -14,7 +14,7 @@ int main(){
 			cin>>l>>w>>r;
 			float nr = r / pow(2, 0.5); //nr -> new raduis after fission
 			float dis = pow(pow(l - 2 * nr, 2) + pow(w - 2 * nr, 2), 0.5); //max distance between centres of virus
-			if(dis < 2 * nr)
+			if(dis < 2 * nr || l < 2 * nr || w < 2 * nr)
 				cout<<"Not enough space for fission."<<endl;
 			else
 				cout<<fixed<<setprecision(4)<<dis<<endl; //setting precision of 4 decimal places as given in output
