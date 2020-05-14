@@ -13,18 +13,11 @@ int main(){
 			float l, w, r; //l->length, w->width r->radius of the virus to make fission (float as they are in real number)
 			cin>>l>>w>>r;
 			float nr = r / pow(2, 0.5); //nr -> new raduis after fission
-			float minReq = 4 * nr; //minimum length requried (4*newRadius)
-
-			if(l < minReq && w < minReq) //condition for min space required (if length or width is less than minimun required)
-			{  
+			float dis = pow(pow(l - 2 * nr, 2) + pow(w - 2 * nr, 2), 0.5); //max distance between centres of virus
+			if(dis < 2 * nr)
 				cout<<"Not enough space for fission."<<endl;
-			}
-
 			else
-			{
-				float ans = pow(pow(l - 2 * nr, 2) + pow(w - 2 * nr, 2), 0.5); //max distance between centres of virus
-				cout<<fixed<<setprecision(4)<<ans<<endl; //setting precision of 4 decimal places as given in output
-			}
+				cout<<fixed<<setprecision(4)<<dis<<endl; //setting precision of 4 decimal places as given in output
 		}
 
 		else{
