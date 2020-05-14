@@ -31,7 +31,29 @@ int main(){
 			// for fusion
 			float r1, r2, d; //r1->radius of the first virus, r2->radius of the second virus d->distance between virus
 			cin>>r1>>r2>>d;
-			//perform calculation for fusion set here
+			float ratio; //to store Compaction ratio 
+			if(d >= r1 + r2) //condition for Compaction ratio to be 1 (if d is greater or equal to sum of radii)
+			{
+				ratio = 1;
+				cout<<fixed<<setprecision(4)<<ratio<<endl; //setting precision of 4 decimal places as given in output
+				cout<<"No compaction has occurred."<<endl; //priniting line as asking in the question
+			}
+			else
+			{
+				float area1, area2, intersection; //area1->area of first virus, area2->area of second virus, intersection->intersection area of both virus
+
+				area1 = M_PI * r1 * r1; //area of first virus (PI*r1*r1)
+				area2 = M_PI * r2 * r2; //area of first virus (PI*r2*r2)
+
+				float angle1 = acos((d*d + r1*r1 - r2*r2) / (2 * d * r1)); //angle between lines from centre of first virus to centre of second radius and point of intersection 
+				float angle2 = acos((d*d + r2*r2 - r1*r1) / (2 * d *r2)); //angle between lines from centre of second virus to centre of first radius and point of intersection 
+				intersection = r2*r2*angle2 + r1*r1*angle1 - (0.5 * (r1*r1*sin(2 * angle1) + r2*r2*sin(2 * angle2))); //interestion area between virus
+				
+				float surfTotal = area1 + area2 - intersection; //total surface area of merged virus
+				
+				ratio = surfTotal / (area1 + area2); //ratio as given in question
+				cout<<fixed<<setprecision(4)<<ratio<<endl; //setting precision of 4 decimal places as given in output
+			}
 		}
 
 		cout<<endl; //blank line after each test input
